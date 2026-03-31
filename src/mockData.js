@@ -180,3 +180,97 @@ export const crmPipelineSummary = {
   conversionRate: 34.2,
   estimatedRevenue: 18450,
 };
+
+// Maintenance tickets
+export const maintenanceTickets = [
+  { id: 'MT001', unit: '101', building: 'Building A', tenant: 'Sarah Johnson', category: 'HVAC', description: 'AC not cooling properly', priority: 'high', status: 'in-progress', assignedTo: 'Carlos M.', createdDate: '2026-03-28', updatedDate: '2026-03-30', estimatedCost: 380, actualCost: null, daysOpen: 3 },
+  { id: 'MT002', unit: '203', building: 'Building B', tenant: null, category: 'HVAC', description: 'HVAC unit replacement needed', priority: 'urgent', status: 'open', assignedTo: 'Carlos M.', createdDate: '2026-03-25', updatedDate: '2026-03-25', estimatedCost: 2400, actualCost: null, daysOpen: 6 },
+  { id: 'MT003', unit: '302', building: 'Building B', tenant: null, category: 'Plumbing', description: 'Leaky faucet in bathroom', priority: 'medium', status: 'open', assignedTo: 'Tom R.', createdDate: '2026-03-29', updatedDate: '2026-03-29', estimatedCost: 120, actualCost: null, daysOpen: 2 },
+  { id: 'MT004', unit: '202', building: 'Building A', tenant: 'James Wilson', category: 'Electrical', description: 'Outlet sparking in kitchen', priority: 'urgent', status: 'resolved', assignedTo: 'Mike P.', createdDate: '2026-03-26', updatedDate: '2026-03-27', estimatedCost: 200, actualCost: 185, daysOpen: 1 },
+  { id: 'MT005', unit: '301', building: 'Building B', tenant: 'Anna Garcia', category: 'Appliance', description: 'Dishwasher not draining', priority: 'low', status: 'in-progress', assignedTo: 'Tom R.', createdDate: '2026-03-28', updatedDate: '2026-03-30', estimatedCost: 150, actualCost: null, daysOpen: 3 },
+  { id: 'MT006', unit: '103', building: 'Building A', tenant: 'Mike Chen', category: 'Painting', description: 'Wall damage repair before lease renewal', priority: 'medium', status: 'scheduled', assignedTo: 'Maria L.', createdDate: '2026-03-27', updatedDate: '2026-03-28', estimatedCost: 350, actualCost: null, daysOpen: 4 },
+  { id: 'MT007', unit: '401', building: 'Building C', tenant: 'Emily Davis', category: 'Plumbing', description: 'Garbage disposal broken', priority: 'medium', status: 'resolved', assignedTo: 'Tom R.', createdDate: '2026-03-24', updatedDate: '2026-03-25', estimatedCost: 180, actualCost: 165, daysOpen: 1 },
+  { id: 'MT008', unit: '303', building: 'Building C', tenant: 'Tom Brown', category: 'General', description: 'Door lock sticking', priority: 'low', status: 'open', assignedTo: 'Unassigned', createdDate: '2026-03-30', updatedDate: '2026-03-30', estimatedCost: 80, actualCost: null, daysOpen: 1 },
+];
+
+// Payment / rent collection data
+export const rentPayments = [
+  { id: 1, unit: '101', tenant: 'Sarah Johnson', amountDue: 1450, amountPaid: 1450, status: 'paid', dueDate: '2026-04-01', paidDate: '2026-03-30', method: 'ACH', lateFee: 0 },
+  { id: 2, unit: '103', tenant: 'Mike Chen', amountDue: 1100, amountPaid: 1100, status: 'paid', dueDate: '2026-04-01', paidDate: '2026-03-29', method: 'Card', lateFee: 0 },
+  { id: 3, unit: '202', tenant: 'James Wilson', amountDue: 1475, amountPaid: 1475, status: 'paid', dueDate: '2026-04-01', paidDate: '2026-04-01', method: 'ACH', lateFee: 0 },
+  { id: 4, unit: '301', tenant: 'Anna Garcia', amountDue: 1500, amountPaid: 750, status: 'partial', dueDate: '2026-04-01', paidDate: '2026-04-01', method: 'Card', lateFee: 0 },
+  { id: 5, unit: '303', tenant: 'Tom Brown', amountDue: 1150, amountPaid: 0, status: 'overdue', dueDate: '2026-03-01', paidDate: null, method: null, lateFee: 75 },
+  { id: 6, unit: '401', tenant: 'Emily Davis', amountDue: 1850, amountPaid: 0, status: 'upcoming', dueDate: '2026-04-05', paidDate: null, method: null, lateFee: 0 },
+  { id: 7, unit: '205', tenant: 'Jordan Lee', amountDue: 1600, amountPaid: 0, status: 'overdue', dueDate: '2026-03-15', paidDate: null, method: null, lateFee: 100 },
+];
+
+export const expenseBreakdown = [
+  { category: 'Maintenance', amount: 28400, pct: 32.9 },
+  { category: 'Utilities', amount: 18600, pct: 21.6 },
+  { category: 'Management', amount: 14200, pct: 16.5 },
+  { category: 'Insurance', amount: 9800, pct: 11.4 },
+  { category: 'Taxes', amount: 7600, pct: 8.8 },
+  { category: 'Marketing', amount: 4200, pct: 4.9 },
+  { category: 'Other', amount: 3400, pct: 3.9 },
+];
+
+// Tenant screening applicants
+export const applicants = [
+  { id: 1, name: 'Rachel Torres', unit: '201', appliedDate: '2026-03-25', creditScore: 742, monthlyIncome: 6200, incomeRatio: 3.26, rentalHistory: 'excellent', employment: 'verified', aiScore: 88, riskLevel: 'low', status: 'pending', flags: [], recommendation: 'Approve' },
+  { id: 2, name: 'Marcus Johnson', unit: '302', appliedDate: '2026-03-27', creditScore: 681, monthlyIncome: 5800, incomeRatio: 3.05, rentalHistory: 'good', employment: 'verified', aiScore: 71, riskLevel: 'medium', status: 'pending', flags: ['Short rental history'], recommendation: 'Conditional' },
+  { id: 3, name: 'Alex Rivera', unit: '302', appliedDate: '2026-03-28', creditScore: 598, monthlyIncome: 4800, incomeRatio: 2.53, rentalHistory: 'limited', employment: 'verified', aiScore: 52, riskLevel: 'high', status: 'pending', flags: ['Low credit score', 'Income ratio below 3x'], recommendation: 'Decline' },
+  { id: 4, name: 'Nina Williams', unit: '401', appliedDate: '2026-03-24', creditScore: 798, monthlyIncome: 8500, incomeRatio: 4.47, rentalHistory: 'excellent', employment: 'verified', aiScore: 94, riskLevel: 'low', status: 'approved', flags: [], recommendation: 'Approve' },
+  { id: 5, name: 'David Kim', unit: '102', appliedDate: '2026-03-29', creditScore: 715, monthlyIncome: 5900, incomeRatio: 3.10, rentalHistory: 'good', employment: 'pending', aiScore: 78, riskLevel: 'low', status: 'pending', flags: ['Employment pending verification'], recommendation: 'Approve' },
+];
+
+// Equipment health for predictive maintenance
+export const equipmentHealth = [
+  { id: 1, name: 'HVAC Unit A-1', building: 'Building A', type: 'HVAC', age: 7, condition: 65, lastService: '2026-01-15', nextService: '2026-07-15', failureProbability: 42, estimatedFailDate: '2026-08-20', replacementCost: 4200, preventiveCost: 380, status: 'warning' },
+  { id: 2, name: 'HVAC Unit B-2', building: 'Building B', type: 'HVAC', age: 11, condition: 38, lastService: '2025-09-10', nextService: '2026-03-10', failureProbability: 78, estimatedFailDate: '2026-05-15', replacementCost: 4200, preventiveCost: 520, status: 'critical' },
+  { id: 3, name: 'Elevator A', building: 'Building A', type: 'Elevator', age: 4, condition: 88, lastService: '2026-02-20', nextService: '2026-08-20', failureProbability: 12, estimatedFailDate: '2027-03-10', replacementCost: 18000, preventiveCost: 1200, status: 'good' },
+  { id: 4, name: 'Water Heater C-1', building: 'Building C', type: 'Plumbing', age: 9, condition: 52, lastService: '2025-11-05', nextService: '2026-05-05', failureProbability: 61, estimatedFailDate: '2026-06-30', replacementCost: 1800, preventiveCost: 220, status: 'warning' },
+  { id: 5, name: 'Pool Pump', building: 'Amenities', type: 'Pool', age: 3, condition: 91, lastService: '2026-03-01', nextService: '2026-09-01', failureProbability: 8, estimatedFailDate: '2027-06-15', replacementCost: 2400, preventiveCost: 180, status: 'good' },
+  { id: 6, name: 'Boiler B-1', building: 'Building B', type: 'Heating', age: 12, condition: 31, lastService: '2025-10-15', nextService: '2026-04-15', failureProbability: 85, estimatedFailDate: '2026-04-30', replacementCost: 8500, preventiveCost: 650, status: 'critical' },
+];
+
+// Chat/message data for communication hub
+export const tenantMessages = [
+  { id: 1, tenant: 'Sarah Johnson', unit: '101', avatar: 'SJ', category: 'lease', subject: 'Lease renewal question', preview: 'Hi, I wanted to ask about renewing my lease. My current lease ends June 30th...', time: '10:23 AM', unread: true, priority: false },
+  { id: 2, tenant: 'Anna Garcia', unit: '301', avatar: 'AG', category: 'maintenance', subject: 'Dishwasher still not working', preview: 'The technician came by but it still isnt draining properly. Can someone follow up?', time: '9:47 AM', unread: true, priority: true },
+  { id: 3, tenant: 'Mike Chen', unit: '103', avatar: 'MC', category: 'general', subject: 'Package delivery question', preview: 'Is there a package locker system? I keep missing deliveries when Im at work...', time: 'Yesterday', unread: false, priority: false },
+  { id: 4, tenant: 'James Wilson', unit: '202', avatar: 'JW', category: 'maintenance', subject: 'Parking spot issue', preview: 'Someone keeps parking in my assigned spot (A-12). This has happened 3 times...', time: 'Yesterday', unread: true, priority: false },
+  { id: 5, tenant: 'Tom Brown', unit: '303', avatar: 'TB', category: 'payment', subject: 'Payment plan request', preview: 'I am going through a tough time financially this month. Would it be possible...', time: '2 days ago', unread: false, priority: true },
+  { id: 6, tenant: 'Emily Davis', unit: '401', avatar: 'ED', category: 'general', subject: 'Guest policy clarification', preview: 'Hi, I have a family member visiting for 3 weeks next month. What is the guest policy?', time: '2 days ago', unread: false, priority: false },
+  { id: 7, tenant: 'Sarah Johnson', unit: '101', avatar: 'SJ', category: 'maintenance', subject: 'AC not cooling enough', preview: 'Following up on the maintenance request I submitted. The AC is still not reaching...', time: '3 days ago', unread: false, priority: false },
+];
+
+// AI chatbot metrics
+export const chatbotMetrics = {
+  totalConversations: 1284,
+  resolvedByAI: 967,
+  leadsCaptured: 84,
+  avgResponseTime: '< 30s',
+  humanHandoffs: 317,
+  afterHoursConversations: 412,
+  satisfactionScore: 4.6,
+};
+
+export const chatbotConversations = [
+  { id: 1, visitor: 'Anonymous Visitor', time: '2:34 PM', status: 'resolved', messages: [
+    { role: 'visitor', text: 'Hi, is the 2BR unit still available?', time: '2:34 PM' },
+    { role: 'bot', text: 'Hi there! Yes, we have two 2BR/2BA units available at Sunset Ridge. Unit 102 (1,050 sqft, $1,950/mo) and Unit 302 (1,050 sqft, $2,000/mo). Would you like to schedule a tour?', time: '2:34 PM' },
+    { role: 'visitor', text: 'What is the earliest I can move in?', time: '2:35 PM' },
+    { role: 'bot', text: 'Both units are available for immediate move-in! I can schedule you a self-guided tour today. What time works best for you?', time: '2:35 PM' },
+    { role: 'visitor', text: 'Tomorrow afternoon works', time: '2:36 PM' },
+    { role: 'bot', text: 'Perfect! I have 2 PM and 4 PM available tomorrow. Which do you prefer? I will just need your name and email to confirm.', time: '2:36 PM' },
+  ]},
+];
+
+// Vacancy predictor at-risk units
+export const atRiskUnits = [
+  { unit: '101', tenant: 'Sarah Johnson', leaseEnd: '2026-06-30', daysRemaining: 91, moveOutProbability: 62, reason: 'No renewal engagement, similar units nearby $50 cheaper', recommendedAction: 'Offer renewal incentive', potentialLoss: 1450 },
+  { unit: '103', tenant: 'Mike Chen', leaseEnd: '2026-04-15', daysRemaining: 15, moveOutProbability: 78, reason: 'Already browsing competitor listings online', recommendedAction: 'Call immediately + offer 1-month free', potentialLoss: 1100 },
+  { unit: '301', tenant: 'Anna Garcia', leaseEnd: '2026-05-20', daysRemaining: 50, moveOutProbability: 45, reason: 'Maintenance frustration, 2 complaints in 30 days', recommendedAction: 'Resolve maintenance, send appreciation gift', potentialLoss: 1500 },
+  { unit: '202', tenant: 'James Wilson', leaseEnd: '2026-08-31', daysRemaining: 153, moveOutProbability: 22, reason: 'Low risk - long tenure, no complaints', recommendedAction: 'Send renewal offer at 60-day mark', potentialLoss: 1475 },
+  { unit: '401', tenant: 'Emily Davis', leaseEnd: '2026-07-15', daysRemaining: 106, moveOutProbability: 35, reason: 'Mentioned looking for more space in last survey', recommendedAction: 'Offer unit upgrade to 3BR', potentialLoss: 1850 },
+];

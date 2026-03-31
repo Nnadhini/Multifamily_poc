@@ -10,7 +10,6 @@ const tenants = units
       ? Math.round((new Date(u.leaseEnd) - new Date('2026-03-31')) / (1000 * 60 * 60 * 24))
       : null;
     const risk = daysToExpiry <= 30 ? 'high' : daysToExpiry <= 90 ? 'medium' : 'low';
-    const payStatus = ['paid', 'paid', 'paid', 'overdue', 'partial'][Math.floor(Math.random() * 5)] || 'paid';
     return { ...u, daysToExpiry, risk, payStatus: u.unit === '303' ? 'overdue' : u.unit === '301' ? 'partial' : 'paid' };
   });
 

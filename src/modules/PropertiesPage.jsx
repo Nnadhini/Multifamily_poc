@@ -29,7 +29,10 @@ export default function PropertiesPage({ onNavigate }) {
   const totalVacant = units.filter(u => u.status === 'vacant').length;
   const vacancyRate = ((totalVacant / units.length) * 100).toFixed(1);
   const totalRevenue = units.filter(u => u.status === 'occupied').reduce((s, u) => s + u.rent, 0);
-  const avgRevPerSqft = (units.filter(u => u.status === 'occupied').reduce((s, u) => s + u.rent / u.sqft, 0) / units.filter(u => u.status === 'occupied').length).toFixed(2);
+  const occupiedUnits = units.filter(u => u.status === 'occupied');
+  const avgRevPerSqft = occupiedUnits.length > 0
+    ? (occupiedUnits.reduce((s, u) => s + u.rent / u.sqft, 0) / occupiedUnits.length).toFixed(2)
+    : '0.00';
 
   return (
     <Box sx={{ p: { xs: '16px', md: '20px 24px' }, maxWidth: 1440 }}>

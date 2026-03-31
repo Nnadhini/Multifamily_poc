@@ -25,7 +25,8 @@ export default function FinancialsPage({ onNavigate }) {
   const [payments, setPayments] = useState(rentPayments);
 
   const collectedCount = payments.filter(p => p.status === 'paid').length;
-  const collectionRate = Math.round((collectedCount / payments.filter(p => p.status !== 'upcoming').length) * 100);
+  const nonUpcoming = payments.filter(p => p.status !== 'upcoming');
+  const collectionRate = nonUpcoming.length > 0 ? Math.round((collectedCount / nonUpcoming.length) * 100) : 0;
 
   const markPaid = (id) => {
     setPayments(prev => prev.map(p => p.id === id ? { ...p, status: 'paid', amountPaid: p.amountDue, paidDate: new Date().toISOString().split('T')[0] } : p));

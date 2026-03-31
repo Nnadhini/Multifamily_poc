@@ -34,7 +34,7 @@ export default function AiTenantScreeningPage({ onNavigate }) {
       </Box>
 
       <Alert severity="info" sx={{ mb: 2, borderRadius: '10px', fontSize: '0.78rem' }}>
-        AI-powered screening analyzes credit, income, rental history &amp; employment. Average processing time: <strong>{processingTime}</strong>. Compliance: Fair Housing Act.
+        AI-powered screening analyzes credit, income, rental history & employment. Average processing time: <strong>{processingTime}</strong>. Compliance: Fair Housing Act.
       </Alert>
 
       <Grid container spacing={1.75} sx={{ mb: 2.5 }}>

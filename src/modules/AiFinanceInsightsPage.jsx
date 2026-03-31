@@ -5,11 +5,11 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, L
 import { revenueTrend, expenseBreakdown, revenueOpportunities } from '../mockData';
 
 const recommendations = [
-  { id: 1, category: 'Pricing', title: '3 units priced below market', impact: '+$34,080/yr', priority: 'high', action: 'Adjust Pricing', color: '#059669', applied: false },
-  { id: 2, category: 'Vacancy', title: 'Unit 302 vacant 22 days (avg 18)', impact: '+$1,760 savings', priority: 'high', action: 'Reduce Price 4%', color: '#DC2626', applied: false },
-  { id: 3, category: 'Expense', title: 'Maintenance costs 8% above budget', impact: '-$2,400 savings', priority: 'medium', action: 'Review Vendors', color: '#F59E0B', applied: false },
-  { id: 4, category: 'Revenue', title: 'Add pet fees for 3 units', impact: '+$3,780/yr', priority: 'medium', action: 'Enable Pet Rent', color: '#7C3AED', applied: false },
-  { id: 5, category: 'Expense', title: 'Utility costs trending up 12%', impact: '-$4,200/yr potential', priority: 'medium', action: 'Energy Audit', color: '#F59E0B', applied: false },
+  { id: 1, category: 'Pricing', title: '3 units priced below market', impact: '+$34,080/yr', impactValue: 34080, priority: 'high', action: 'Adjust Pricing', color: '#059669', applied: false },
+  { id: 2, category: 'Vacancy', title: 'Unit 302 vacant 22 days (avg 18)', impact: '+$1,760 savings', impactValue: 1760, priority: 'high', action: 'Reduce Price 4%', color: '#DC2626', applied: false },
+  { id: 3, category: 'Expense', title: 'Maintenance costs 8% above budget', impact: '-$2,400 savings', impactValue: 2400, priority: 'medium', action: 'Review Vendors', color: '#F59E0B', applied: false },
+  { id: 4, category: 'Revenue', title: 'Add pet fees for 3 units', impact: '+$3,780/yr', impactValue: 3780, priority: 'medium', action: 'Enable Pet Rent', color: '#7C3AED', applied: false },
+  { id: 5, category: 'Expense', title: 'Utility costs trending up 12%', impact: '-$4,200/yr potential', impactValue: 4200, priority: 'medium', action: 'Energy Audit', color: '#F59E0B', applied: false },
 ];
 
 const anomalies = [
@@ -33,10 +33,7 @@ export default function AiFinanceInsightsPage({ onNavigate }) {
 
   const applyRec = (id) => setRecs(prev => prev.map(r => r.id === id ? { ...r, applied: true } : r));
 
-  const totalOpportunity = recs.filter(r => !r.applied).reduce((s, r) => {
-    const match = r.impact.match(/\$[\d,]+/);
-    return s + (match ? parseInt(match[0].replace(/[$,]/g, '')) : 0);
-  }, 0);
+  const totalOpportunity = recs.filter(r => !r.applied).reduce((s, r) => s + r.impactValue, 0);
   const highPriority = recs.filter(r => r.priority === 'high' && !r.applied).length;
 
   const roiReturn = Math.round(capex * 1.18);

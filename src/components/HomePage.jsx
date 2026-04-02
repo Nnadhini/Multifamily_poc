@@ -4,7 +4,7 @@ import {
   Dashboard, AccountBalance, Apartment, People, Description, Build,
   EventAvailable, BarChart, Email, PriceChange, TrendingUp, SmartToy,
   Campaign, NotificationsNone, AutoAwesome, WbSunny, ArrowForward,
-  Verified, Speed
+  Verified, Speed, RocketLaunch, HomeWork, Search, EventBusy, Insights,
 } from '@mui/icons-material';
 
 const portalModules = [
@@ -29,6 +29,13 @@ const aiFeatures = [
   { key: 'ai-rent-reminders', title: 'Smart Rent Reminders', desc: 'Auto-escalate overdue, legal notices', impact: '↓ Late payments', icon: <NotificationsNone />, color: '#059669' },
   { key: 'ai-listing', title: 'AI Listing Writer', desc: 'Auto-generate listing copy, photos tagging', impact: '↑ Faster fill rate', icon: <AutoAwesome />, color: '#7C3AED' },
   { key: 'ai-finance', title: 'AI Finance Insights', desc: 'Spot underperforming units, tax optimization', impact: '↑ Net income', icon: <AccountBalance />, color: '#2563EB' },
+];
+
+const revenueFeatures = [
+  { key: 'renter-listing', title: 'Renter Listing Page', desc: 'SEO-optimized listing with AI virtual tour, smart lock booking, and neighborhood data', impact: '+3x listing engagement', icon: <HomeWork />, color: '#059669' },
+  { key: 'seo-audit', title: 'SEO Audit Dashboard', desc: 'Prove SEO optimization drives traffic from 2K to 20K daily with keyword opportunities', impact: '37K monthly searches', icon: <Search />, color: '#2563EB' },
+  { key: 'no-show-recovery', title: 'No-Show Recovery', desc: 'Prevent, recover, and fill every wasted tour slot using smart lock data and AI', impact: '$168K annual impact', icon: <EventBusy />, color: '#DC2626' },
+  { key: 'manager-roi', title: 'Manager ROI Dashboard', desc: "Show property managers Rently's concrete value — tours, leases, and revenue impact", impact: '12x average ROI', icon: <Insights />, color: '#7C3AED' },
 ];
 
 const getGreeting = () => {
@@ -144,6 +151,48 @@ export default function HomePage({ onNavigate }) {
                   <Typography sx={{ fontWeight: 700, fontSize: '0.88rem', color: '#F1F5F9', mb: 0.35 }}>{ai.title}</Typography>
                   <Typography sx={{ fontSize: '0.7rem', color: '#94A3B8', lineHeight: 1.4, mb: 1.25 }}>{ai.desc}</Typography>
                   <Chip label={ai.impact} size="small" sx={{ height: 22, fontSize: '0.6rem', fontWeight: 700, bgcolor: `${ai.color}20`, color: ai.color, border: `1px solid ${ai.color}30` }} />
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+
+      {/* Revenue Engine */}
+      <Box sx={{ mt: 3.5 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
+          <Box sx={{ p: '4px', borderRadius: '6px', background: 'linear-gradient(135deg, #059669, #2563EB)', display: 'flex' }}>
+            <RocketLaunch sx={{ color: '#fff', fontSize: 16 }} />
+          </Box>
+          <Typography sx={{ fontWeight: 800, fontSize: '1.15rem', color: '#0F172A' }}>🚀 Revenue Engine</Typography>
+          <Chip label="Lead Generation Suite" size="small" sx={{ height: 20, fontSize: '0.6rem', fontWeight: 600, bgcolor: '#ECFDF5', color: '#059669' }} />
+        </Box>
+        <Typography sx={{ fontSize: '0.78rem', color: '#94A3B8', mb: 2, ml: 4 }}>SEO, virtual tours, no-show recovery, and ROI proof — tools that fill vacancies and retain managers</Typography>
+
+        <Grid container spacing={1.75}>
+          {revenueFeatures.map(rf => (
+            <Grid item xs={12} sm={6} md={3} key={rf.key}>
+              <Card onClick={() => onNavigate(rf.key)} sx={{
+                cursor: 'pointer', height: '100%',
+                border: `1px solid ${rf.color}20`,
+                background: `linear-gradient(135deg, ${rf.color}04, ${rf.color}08)`,
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: `0 16px 32px -8px ${rf.color}25`,
+                  borderColor: `${rf.color}40`,
+                  '& .arrow-icon': { opacity: 1, transform: 'translateX(0)' },
+                },
+              }}>
+                <CardContent sx={{ p: '18px !important' }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1.5 }}>
+                    <Box sx={{ p: '8px', borderRadius: '12px', bgcolor: `${rf.color}12`, display: 'flex' }}>
+                      {React.cloneElement(rf.icon, { sx: { fontSize: 22, color: rf.color } })}
+                    </Box>
+                    <ArrowForward className="arrow-icon" sx={{ fontSize: 16, color: rf.color, opacity: 0, transform: 'translateX(-8px)', transition: 'all 0.3s' }} />
+                  </Box>
+                  <Typography sx={{ fontWeight: 700, fontSize: '0.92rem', color: '#0F172A', mb: 0.35 }}>{rf.title}</Typography>
+                  <Typography sx={{ fontSize: '0.72rem', color: '#94A3B8', lineHeight: 1.4, mb: 1.25 }}>{rf.desc}</Typography>
+                  <Chip label={rf.impact} size="small" sx={{ height: 22, fontSize: '0.6rem', fontWeight: 700, bgcolor: `${rf.color}12`, color: rf.color, border: `1px solid ${rf.color}20` }} />
                 </CardContent>
               </Card>
             </Grid>

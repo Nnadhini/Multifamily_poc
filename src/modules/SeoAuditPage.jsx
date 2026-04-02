@@ -348,7 +348,7 @@ export default function SeoAuditPage({ onNavigate }) {
                 onClick={() => setExpandedCode(e => !e)}
               >
                 <pre style={{ margin: 0, whiteSpace: 'pre-wrap', color: '#A5F3FC' }}>
-                  <span style={{ color: '#FCD34D' }}>{jsonLdCode.replace(/"([^"]+)":/g, (m, k) => `<span style="color:#FCD34D">"${k}"</span>:`)}</span>
+                  {jsonLdCode}
                 </pre>
                 {!expandedCode && (
                   <Box sx={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 40, background: 'linear-gradient(transparent, #0F172A)', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', pb: 0.5 }}>

@@ -57,8 +57,9 @@ const recoveryStatusColors = {
 };
 
 export default function NoShowRecoveryPage({ onNavigate }) {
-  const [riskScore] = useState('HIGH');
   const [slotFilled, setSlotFilled] = useState(false);
+
+  const riskScore = 'HIGH';
 
   const riskColor = riskScore === 'HIGH' ? '#DC2626' : riskScore === 'MEDIUM' ? '#F59E0B' : '#059669';
   const riskBg = riskScore === 'HIGH' ? '#FEF2F2' : riskScore === 'MEDIUM' ? '#FFFBEB' : '#ECFDF5';

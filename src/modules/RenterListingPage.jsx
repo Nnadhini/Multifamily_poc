@@ -43,10 +43,7 @@ export default function RenterListingPage({ onNavigate }) {
       intervalRef.current = setInterval(() => {
         setProgress(prev => {
           if (prev >= 100) {
-            setCurrentRoom(r => {
-              const next = (r + 1) % rooms.length;
-              return next;
-            });
+            setCurrentRoom(r => (r + 1) % rooms.length);
             return 0;
           }
           return prev + (100 / (SLIDE_DURATION / 100));

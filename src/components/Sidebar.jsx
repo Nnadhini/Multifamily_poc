@@ -4,12 +4,14 @@ import {
   Dashboard, People, Build, BarChart, Settings, ExpandLess, ExpandMore,
   ChevronLeft, ChevronRight, LocationCity, FiberManualRecord, AutoAwesome,
   NotificationsNone, Home, AccountBalance, Apartment, Description,
-  Campaign, SmartToy, TrendingUp, Email, PriceChange, EventAvailable
+  Campaign, SmartToy, TrendingUp, Email, PriceChange, EventAvailable,
+  RocketLaunch, HomeWork, Search, EventBusy, Insights,
 } from '@mui/icons-material';
 
 export default function Sidebar({ communities, selected, selectedBuilding, onSelectCommunity, onSelectBuilding, open, onToggle, currentPage, onNavigate }) {
   const [expandedCommunity, setExpandedCommunity] = useState(selected?.id);
   const [showAi, setShowAi] = useState(false);
+  const [showRevenue, setShowRevenue] = useState(false);
   const width = open ? 264 : 68;
 
   const mainNav = [
@@ -35,6 +37,13 @@ export default function Sidebar({ communities, selected, selectedBuilding, onSel
     { key: 'ai-rent-reminders', label: 'Rent Reminders', icon: <NotificationsNone /> },
     { key: 'ai-listing', label: 'Listing Writer', icon: <AutoAwesome /> },
     { key: 'ai-finance', label: 'Finance Insights', icon: <AccountBalance /> },
+  ];
+
+  const revenueNav = [
+    { key: 'renter-listing', label: 'Renter Listing', icon: <HomeWork /> },
+    { key: 'seo-audit', label: 'SEO Audit', icon: <Search /> },
+    { key: 'no-show-recovery', label: 'No-Show Recovery', icon: <EventBusy /> },
+    { key: 'manager-roi', label: 'Manager ROI', icon: <Insights /> },
   ];
 
   const getDotColor = (occ, tot) => { const r = (occ/tot)*100; return r >= 90 ? '#10B981' : r >= 75 ? '#F59E0B' : '#EF4444'; };
@@ -100,7 +109,22 @@ export default function Sidebar({ communities, selected, selectedBuilding, onSel
 
         <Divider sx={{ borderColor: '#1E293B', mx: 1.5, my: 0.5 }} />
 
-        {/* Communities */}
+        {/* Revenue Engine */}
+        {open && (
+          <ListItemButton onClick={() => setShowRevenue(!showRevenue)} sx={{ mx: '4px', borderRadius: '10px', py: '5px' }}>
+            <ListItemIcon sx={{ minWidth: 34, color: '#059669' }}><RocketLaunch sx={{ fontSize: 18 }} /></ListItemIcon>
+            <ListItemText primary="Revenue Engine" primaryTypographyProps={{ fontSize: '0.76rem', fontWeight: 600, color: '#059669' }} />
+            <Chip label="4" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: '#05966920', color: '#059669', fontWeight: 700 }} />
+            {showRevenue ? <ExpandLess sx={{ color: '#475569', fontSize: 16, ml: 0.5 }} /> : <ExpandMore sx={{ color: '#475569', fontSize: 16, ml: 0.5 }} />}
+          </ListItemButton>
+        )}
+        <Collapse in={showRevenue || !open}>
+          <List sx={{ px: 0.5 }}>
+            {revenueNav.map(item => <NavItem key={item.key} item={item} />)}
+          </List>
+        </Collapse>
+
+        <Divider sx={{ borderColor: '#1E293B', mx: 1.5, my: 0.5 }} />
         {open && <Box sx={{ px: 2, pt: 1, pb: 0.5 }}><Typography sx={{ color: '#475569', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.55rem' }}>Properties</Typography></Box>}
         <List sx={{ px: 0.5 }}>
           {communities.map((c) => (

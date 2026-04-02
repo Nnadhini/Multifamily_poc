@@ -274,3 +274,82 @@ export const atRiskUnits = [
   { unit: '202', tenant: 'James Wilson', leaseEnd: '2026-08-31', daysRemaining: 153, moveOutProbability: 22, reason: 'Low risk - long tenure, no complaints', recommendedAction: 'Send renewal offer at 60-day mark', potentialLoss: 1475 },
   { unit: '401', tenant: 'Emily Davis', leaseEnd: '2026-07-15', daysRemaining: 106, moveOutProbability: 35, reason: 'Mentioned looking for more space in last survey', recommendedAction: 'Offer unit upgrade to 3BR', potentialLoss: 1850 },
 ];
+
+// ─── Revenue Engine Mock Data ─────────────────────────────────────────────────
+
+export const tourReviews = [
+  { id: 1, reviewer: 'Ashley M.', unit: '102', rating: 5, text: 'The self-guided tour was so convenient! The app worked perfectly, the unit was exactly as shown in the photos, and the smart lock made access seamless. Already submitted my application.', date: '2025-03-28', tourType: 'self-guided' },
+  { id: 2, reviewer: 'Carlos R.', unit: '102', rating: 5, text: 'Loved touring on my own schedule at 7 PM after work. The open-concept living area is stunning and the natural light in the morning must be incredible. Very modern finishes throughout.', date: '2025-03-25', tourType: 'self-guided' },
+  { id: 3, reviewer: 'Priya K.', unit: '102', rating: 4, text: 'Great apartment overall! The kitchen is spacious and the bedrooms are well-sized. Parking is a bit of a walk but manageable. Would highly recommend doing a self-guided tour — very easy process.', date: '2025-03-21', tourType: 'self-guided' },
+  { id: 4, reviewer: 'Jordan T.', unit: '102', rating: 5, text: 'Best apartment touring experience I have had. No pressure, no waiting for an agent, just me exploring at my own pace. The unit is gorgeous — hardwood floors, updated appliances, huge closets.', date: '2025-03-18', tourType: 'self-guided' },
+  { id: 5, reviewer: 'Madison S.', unit: '102', rating: 4, text: 'The virtual tour matched reality perfectly. Balcony view is a nice bonus. South Austin location is unbeatable — walkable to coffee shops and restaurants. Would recommend to anyone looking in this area.', date: '2025-03-15', tourType: 'self-guided' },
+];
+
+export const seoKeywords = [
+  { keyword: 'self guided apartment tour austin', monthlySearches: 8400, competition: 'None', currentRank: 'Not ranked', estimatedClicks: 756 },
+  { keyword: 'tour apartment without agent', monthlySearches: 6200, competition: 'Low', currentRank: 'Not ranked', estimatedClicks: 558 },
+  { keyword: '2 bedroom apartment south austin', monthlySearches: 5800, competition: 'Low', currentRank: 'Not ranked', estimatedClicks: 522 },
+  { keyword: 'self-guided home tours near me', monthlySearches: 4900, competition: 'None', currentRank: 'Not ranked', estimatedClicks: 441 },
+  { keyword: 'austin tx apartments pet friendly', monthlySearches: 4300, competition: 'Low', currentRank: 'Not ranked', estimatedClicks: 387 },
+  { keyword: 'apartment virtual tour 3d walkthrough', monthlySearches: 3800, competition: 'None', currentRank: 'Not ranked', estimatedClicks: 342 },
+  { keyword: 'no agent apartment tour schedule online', monthlySearches: 2600, competition: 'None', currentRank: 'Not ranked', estimatedClicks: 234 },
+  { keyword: 'smart lock apartment access tour', monthlySearches: 1200, competition: 'None', currentRank: 'Not ranked', estimatedClicks: 108 },
+];
+
+export const noShowFunnel = {
+  booked: 100,
+  reminded: 100,
+  showedUp: 85,
+  noShow: 15,
+  recovered: 10,
+  slotFilled: 8,
+};
+
+export const recoveryTimeline = [
+  { time: '0 min', event: 'Tour start time reached', detail: 'Smart lock access expected', icon: 'schedule', status: 'trigger' },
+  { time: '15 min', event: 'AI detects no-show', detail: 'Smart lock not accessed — no-show confirmed', icon: 'lock', status: 'detected' },
+  { time: '30 min', event: 'Automated SMS sent', detail: 'Reschedule / Video Tour / Chat options offered', icon: 'sms', status: 'action' },
+  { time: 'Day 1', event: 'Follow-up with urgency', detail: '"Unit 102 had 3 tours this week — still interested?"', icon: 'campaign', status: 'action' },
+  { time: 'Day 3', event: 'Alternative unit suggestion', detail: 'AI matches similar available units', icon: 'auto_awesome', status: 'action' },
+  { time: 'Day 7', event: 'Final scarcity message', detail: '"Application pending — last chance to tour Unit 102"', icon: 'notification_important', status: 'final' },
+];
+
+export const managerRoiData = {
+  heroStats: { tours: 47, leases: 16, revenue: 26400, roi: 12 },
+  monthlyPerformance: [
+    { month: 'Oct', tours: 28, leases: 9, revenue: 14850 },
+    { month: 'Nov', tours: 32, leases: 11, revenue: 18150 },
+    { month: 'Dec', tours: 29, leases: 10, revenue: 16500 },
+    { month: 'Jan', tours: 38, leases: 13, revenue: 21450 },
+    { month: 'Feb', tours: 43, leases: 15, revenue: 24750 },
+    { month: 'Mar', tours: 47, leases: 16, revenue: 26400 },
+  ],
+  featureImpact: [
+    { feature: 'AI Virtual Tour', engagement: '+3x listing engagement', tours: '+8 extra tours/mo', savings: '$13,200/yr' },
+    { feature: 'No-Show Recovery', engagement: '67% recovery rate', tours: '15 tours recovered', savings: '$14,025/mo' },
+    { feature: 'SEO Traffic', engagement: '+5,000 monthly visitors', tours: '+120 leads/mo', savings: '$168,000/yr' },
+    { feature: 'AI Chatbot', engagement: '340 after-hours inquiries', tours: '+22 tours/mo', savings: '$36,300/yr' },
+  ],
+};
+
+export const trafficProjection = [
+  { month: 'Apr', current: 2000, projected: 2000, phase: 'Baseline' },
+  { month: 'May', current: 2000, projected: 3200, phase: 'SEO Setup' },
+  { month: 'Jun', current: 2000, projected: 4800, phase: 'SEO Setup' },
+  { month: 'Jul', current: 2000, projected: 7200, phase: 'Growth' },
+  { month: 'Aug', current: 2000, projected: 10500, phase: 'Growth' },
+  { month: 'Sep', current: 2000, projected: 13000, phase: 'Scale' },
+  { month: 'Oct', current: 2000, projected: 15500, phase: 'Scale' },
+  { month: 'Nov', current: 2000, projected: 17200, phase: 'Scale' },
+  { month: 'Dec', current: 2000, projected: 18500, phase: 'Peak' },
+  { month: 'Jan', current: 2000, projected: 19200, phase: 'Peak' },
+  { month: 'Feb', current: 2000, projected: 19800, phase: 'Peak' },
+  { month: 'Mar', current: 2000, projected: 20000, phase: 'Peak' },
+];
+
+export const leadSourceBreakdown = [
+  { name: 'homes.rently.com SEO', value: 38, color: '#059669' },
+  { name: 'Zillow Redirect', value: 28, color: '#2563EB' },
+  { name: 'AI Chatbot', value: 20, color: '#7C3AED' },
+  { name: 'Referral', value: 14, color: '#F59E0B' },
+];

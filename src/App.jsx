@@ -20,6 +20,10 @@ import RenewalNudgerPage from './modules/RenewalNudgerPage';
 import SmartRentRemindersPage from './modules/SmartRentRemindersPage';
 import AiListingWriterPage from './modules/AiListingWriterPage';
 import AiFinanceInsightsPage from './modules/AiFinanceInsightsPage';
+import RenterListingPage from './modules/RenterListingPage';
+import SeoAuditPage from './modules/SeoAuditPage';
+import NoShowRecoveryPage from './modules/NoShowRecoveryPage';
+import ManagerRoiPage from './modules/ManagerRoiPage';
 import { communities } from './mockData';
 
 const pages = {
@@ -42,6 +46,10 @@ const pages = {
   'ai-rent-reminders': SmartRentRemindersPage,
   'ai-listing': AiListingWriterPage,
   'ai-finance': AiFinanceInsightsPage,
+  'renter-listing': RenterListingPage,
+  'seo-audit': SeoAuditPage,
+  'no-show-recovery': NoShowRecoveryPage,
+  'manager-roi': ManagerRoiPage,
 };
 
 export default function App() {

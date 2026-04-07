@@ -24,6 +24,8 @@ import RenterListingPage from './modules/RenterListingPage';
 import SeoAuditPage from './modules/SeoAuditPage';
 import NoShowRecoveryPage from './modules/NoShowRecoveryPage';
 import ManagerRoiPage from './modules/ManagerRoiPage';
+import RentlyLeadIntelPage from './modules/RentlyLeadIntelPage';
+import MarketStatusPredictorPage from './modules/MarketStatusPredictorPage';
 import { communities } from './mockData';
 
 const pages = {
@@ -50,6 +52,8 @@ const pages = {
   'seo-audit': SeoAuditPage,
   'no-show-recovery': NoShowRecoveryPage,
   'manager-roi': ManagerRoiPage,
+  'rently-lead-intel': RentlyLeadIntelPage,
+  'market-predictor': MarketStatusPredictorPage,
 };
 
 export default function App() {

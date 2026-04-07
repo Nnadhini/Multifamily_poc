@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
 import DashboardPage from './components/DashboardPage';
@@ -24,62 +26,106 @@ import RenterListingPage from './modules/RenterListingPage';
 import SeoAuditPage from './modules/SeoAuditPage';
 import NoShowRecoveryPage from './modules/NoShowRecoveryPage';
 import ManagerRoiPage from './modules/ManagerRoiPage';
-import { communities } from './mockData';
+import LoginPage from './pages/LoginPage.jsx';
+import { useAuth } from './context/AuthContext.jsx';
+import { fetchCommunities } from './api/communities.js';
 
-const pages = {
-  home: HomePage,
-  dashboard: DashboardPage,
-  financials: FinancialsPage,
-  properties: PropertiesPage,
-  tenants: TenantManagementPage,
-  leases: LeaseManagementPage,
-  maintenance: MaintenancePage,
-  bookings: BookingsLeadsPage,
-  reports: ReportsPage,
-  communication: CommunicationHubPage,
-  'ai-pricing': DynamicPricingPage,
-  'ai-vacancy': VacancyPredictorPage,
-  'ai-screening': AiTenantScreeningPage,
-  'ai-chatbot': AiChatbotPage,
-  'ai-predictive-maint': PredictiveMaintenancePage,
-  'ai-renewal': RenewalNudgerPage,
-  'ai-rent-reminders': SmartRentRemindersPage,
-  'ai-listing': AiListingWriterPage,
-  'ai-finance': AiFinanceInsightsPage,
-  'renter-listing': RenterListingPage,
-  'seo-audit': SeoAuditPage,
-  'no-show-recovery': NoShowRecoveryPage,
-  'manager-roi': ManagerRoiPage,
-};
+// Map URL path → component
+const PAGE_ROUTES = [
+  { path: '/',                  Component: HomePage },
+  { path: '/dashboard',         Component: DashboardPage },
+  { path: '/financials',        Component: FinancialsPage },
+  { path: '/properties',        Component: PropertiesPage },
+  { path: '/tenants',           Component: TenantManagementPage },
+  { path: '/leases',            Component: LeaseManagementPage },
+  { path: '/maintenance',       Component: MaintenancePage },
+  { path: '/bookings',          Component: BookingsLeadsPage },
+  { path: '/reports',           Component: ReportsPage },
+  { path: '/communication',     Component: CommunicationHubPage },
+  { path: '/ai-pricing',        Component: DynamicPricingPage },
+  { path: '/ai-vacancy',        Component: VacancyPredictorPage },
+  { path: '/ai-screening',      Component: AiTenantScreeningPage },
+  { path: '/ai-chatbot',        Component: AiChatbotPage },
+  { path: '/ai-predictive-maint', Component: PredictiveMaintenancePage },
+  { path: '/ai-renewal',        Component: RenewalNudgerPage },
+  { path: '/ai-rent-reminders', Component: SmartRentRemindersPage },
+  { path: '/ai-listing',        Component: AiListingWriterPage },
+  { path: '/ai-finance',        Component: AiFinanceInsightsPage },
+  { path: '/renter-listing',    Component: RenterListingPage },
+  { path: '/seo-audit',         Component: SeoAuditPage },
+  { path: '/no-show-recovery',  Component: NoShowRecoveryPage },
+  { path: '/manager-roi',       Component: ManagerRoiPage },
+];
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [selectedCommunity, setSelectedCommunity] = useState(communities[0]);
-  const [selectedBuilding, setSelectedBuilding] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+function AppShell() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const PageComponent = pages[currentPage] || HomePage;
+  const { data: communities = [] } = useQuery({
+    queryKey: ['communities'],
+    queryFn: fetchCommunities,
+  });
+
+  const [selectedCommunity, setSelectedCommunity] = useState(null);
+  const [selectedBuilding, setSelectedBuilding]   = useState(null);
+  const [sidebarOpen, setSidebarOpen]             = useState(true);
+
+  // Initialise selectedCommunity once communities load
+  const community = selectedCommunity ?? communities[0] ?? null;
+
+  // currentPage derived from URL so sidebar highlights correctly
+  const currentPage = location.pathname.replace(/^\//, '') || 'home';
+
+  const sharedProps = { community, building: selectedBuilding, onNavigate: (key) => navigate(`/${key === 'home' ? '' : key}`) };
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
       <Sidebar
         communities={communities}
-        selected={selectedCommunity}
+        selected={community}
         selectedBuilding={selectedBuilding}
         onSelectCommunity={(c) => { setSelectedCommunity(c); setSelectedBuilding(null); }}
         onSelectBuilding={setSelectedBuilding}
         open={sidebarOpen}
         onToggle={() => setSidebarOpen(!sidebarOpen)}
         currentPage={currentPage}
-        onNavigate={setCurrentPage}
+        onNavigate={(key) => navigate(`/${key === 'home' ? '' : key}`)}
       />
-      <Box component="main" sx={{ flexGrow: 1, ml: sidebarOpen ? '264px' : '68px', transition: 'margin-left 0.3s cubic-bezier(0.4,0,0.2,1)', minHeight: '100vh' }}>
-        <PageComponent
-          community={selectedCommunity}
-          building={selectedBuilding}
-          onNavigate={setCurrentPage}
-        />
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          ml: sidebarOpen ? '264px' : '68px',
+          transition: 'margin-left 0.3s cubic-bezier(0.4,0,0.2,1)',
+          minHeight: '100vh',
+        }}
+      >
+        <Routes>
+        {PAGE_ROUTES.map(({ path, Component }) => (
+            <Route
+              key={path}
+              path={path}
+              element={React.createElement(Component, sharedProps)}
+            />
+          ))}
+          {/* Catch-all → home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </Box>
     </Box>
+  );
+}
+
+export default function App() {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    <Routes>
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/" replace /> : <LoginPage />} />
+      <Route
+        path="/*"
+        element={isAuthenticated ? <AppShell /> : <Navigate to="/login" replace />}
+      />
+    </Routes>
   );
 }

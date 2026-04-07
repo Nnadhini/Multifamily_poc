@@ -353,3 +353,84 @@ export const leadSourceBreakdown = [
   { name: 'AI Chatbot', value: 20, color: '#7C3AED' },
   { name: 'Referral', value: 14, color: '#F59E0B' },
 ];
+
+// ─── Rently Lead Intel Mock Data ─────────────────────────────────────────────
+
+export const rentlyRenterIntents = [
+  { id: 1, name: 'Olivia Carter', email: 'olivia.c@gmail.com', phone: '(512) 555-1120', bedsWanted: '2BR', budgetMin: 1700, budgetMax: 2100, moveInDate: '2026-05-01', neighborhoods: ['South Austin', 'Zilker'], daysSearching: 8, searchFrequency: 14, lastActive: '2026-04-06', intentScore: 94, matchPct: 91, source: 'Rently App', contacted: false },
+  { id: 2, name: 'Brandon Lee', email: 'brandon.l@email.com', phone: '(512) 555-1243', bedsWanted: '1BR', budgetMin: 1300, budgetMax: 1550, moveInDate: '2026-04-15', neighborhoods: ['Downtown', 'Mueller'], daysSearching: 14, searchFrequency: 9, lastActive: '2026-04-06', intentScore: 88, matchPct: 85, source: 'Rently Search', contacted: false },
+  { id: 3, name: 'Jasmine Wu', email: 'jasmine.wu@email.com', phone: '(512) 555-1367', bedsWanted: 'Studio', budgetMin: 1000, budgetMax: 1200, moveInDate: '2026-05-15', neighborhoods: ['Hyde Park', 'North Loop'], daysSearching: 5, searchFrequency: 7, lastActive: '2026-04-05', intentScore: 82, matchPct: 88, source: 'Rently Email', contacted: false },
+  { id: 4, name: 'Derek Thompson', email: 'derek.t@email.com', phone: '(512) 555-1489', bedsWanted: '3BR', budgetMin: 2200, budgetMax: 2600, moveInDate: '2026-06-01', neighborhoods: ['Westlake', 'Barton Hills'], daysSearching: 21, searchFrequency: 5, lastActive: '2026-04-04', intentScore: 76, matchPct: 78, source: 'Rently App', contacted: false },
+  { id: 5, name: 'Mia Santos', email: 'mia.s@email.com', phone: '(512) 555-1601', bedsWanted: '2BR', budgetMin: 1600, budgetMax: 1950, moveInDate: '2026-05-01', neighborhoods: ['South Austin', 'Travis Heights'], daysSearching: 11, searchFrequency: 11, lastActive: '2026-04-06', intentScore: 89, matchPct: 93, source: 'Rently Search', contacted: false },
+  { id: 6, name: 'Chris Nguyen', email: 'chris.n@email.com', phone: '(512) 555-1722', bedsWanted: '1BR', budgetMin: 1400, budgetMax: 1600, moveInDate: '2026-04-20', neighborhoods: ['Bouldin Creek', 'South Congress'], daysSearching: 3, searchFrequency: 18, lastActive: '2026-04-07', intentScore: 91, matchPct: 87, source: 'Rently App', contacted: false },
+  { id: 7, name: 'Aisha Patel', email: 'aisha.p@email.com', phone: '(512) 555-1844', bedsWanted: '2BR', budgetMin: 1800, budgetMax: 2200, moveInDate: '2026-07-01', neighborhoods: ['Domain', 'North Austin'], daysSearching: 30, searchFrequency: 3, lastActive: '2026-04-02', intentScore: 52, matchPct: 65, source: 'Rently Email', contacted: false },
+  { id: 8, name: 'Ryan Flores', email: 'ryan.f@email.com', phone: '(512) 555-1965', bedsWanted: '1BR', budgetMin: 1250, budgetMax: 1500, moveInDate: '2026-05-01', neighborhoods: ['East Austin', 'Govalle'], daysSearching: 6, searchFrequency: 12, lastActive: '2026-04-05', intentScore: 78, matchPct: 72, source: 'Rently Search', contacted: false },
+  { id: 9, name: 'Taylor Kim', email: 'taylor.k@email.com', phone: '(512) 555-2081', bedsWanted: 'Studio', budgetMin: 950, budgetMax: 1150, moveInDate: '2026-04-25', neighborhoods: ['UT Area', 'Hyde Park'], daysSearching: 9, searchFrequency: 16, lastActive: '2026-04-07', intentScore: 86, matchPct: 90, source: 'Rently App', contacted: false },
+  { id: 10, name: 'Morgan Davis', email: 'morgan.d@email.com', phone: '(512) 555-2198', bedsWanted: '2BR', budgetMin: 1900, budgetMax: 2300, moveInDate: '2026-06-15', neighborhoods: ['Westlake', 'Sunset Valley'], daysSearching: 18, searchFrequency: 4, lastActive: '2026-04-03', intentScore: 61, matchPct: 70, source: 'Rently Email', contacted: false },
+];
+
+export const rentlySearchTrends = [
+  { week: 'Mar W1', yourListings: 142, marketAvg: 890, topZip: '78701', topType: '2BR' },
+  { week: 'Mar W2', yourListings: 168, marketAvg: 920, topZip: '78704', topType: '2BR' },
+  { week: 'Mar W3', yourListings: 195, marketAvg: 870, topZip: '78704', topType: '1BR' },
+  { week: 'Mar W4', yourListings: 221, marketAvg: 950, topZip: '78701', topType: '2BR' },
+  { week: 'Apr W1', yourListings: 248, marketAvg: 980, topZip: '78746', topType: '2BR' },
+];
+
+export const rentlyLeadFunnelData = [
+  { stage: 'Rently Searches Matched', value: 3240, color: '#2563EB' },
+  { stage: 'Listing Views', value: 1180, color: '#7C3AED' },
+  { stage: 'Intent Captured (≥60 score)', value: 248, color: '#F59E0B' },
+  { stage: 'Contacted / Tour Sent', value: 94, color: '#059669' },
+  { stage: 'Tour Scheduled', value: 42, color: '#10B981' },
+  { stage: 'Application Submitted', value: 16, color: '#047857' },
+];
+
+export const rentlyLeadSummary = {
+  totalIntents: 248,
+  highIntent: 87,
+  avgSearchToContact: '4.2 hrs',
+  rentlyConversionRate: 18.1,
+  avgIntentScore: 78.4,
+  matchedUnits: 6,
+};
+
+// ─── Market Status Predictor Mock Data ───────────────────────────────────────
+
+export const unitMarketTimeline = [
+  { unit: '101', building: 'Building A', type: '1BR/1BA', tenant: 'Sarah Johnson', currentStatus: 'off-market', leaseEnd: '2026-06-30', renewalProbability: 38, daysUntilChange: 68, predictedChangeDate: '2026-06-08', confidence: 82, driver: 'Lease ends Jun 30, renewal prob 38%, browsing competitors', recommendedAction: 'Begin pre-marketing May 1', revenueRiskPerDay: 48, marketedDate: null },
+  { unit: '102', building: 'Building A', type: '2BR/2BA', tenant: null, currentStatus: 'on-market', leaseEnd: null, renewalProbability: null, daysUntilChange: 12, predictedChangeDate: '2026-04-19', confidence: 78, driver: 'David Kim application approved, lease signing imminent', recommendedAction: 'Finalize lease with David Kim', revenueRiskPerDay: 65, marketedDate: '2026-03-20' },
+  { unit: '103', building: 'Building A', type: 'Studio', tenant: 'Mike Chen', currentStatus: 'off-market', leaseEnd: '2026-04-15', renewalProbability: 22, daysUntilChange: 8, predictedChangeDate: '2026-04-15', confidence: 95, driver: 'Lease ends Apr 15, already browsing competitor listings', recommendedAction: 'List now — imminent vacancy', revenueRiskPerDay: 37, marketedDate: null },
+  { unit: '201', building: 'Building A', type: '2BR/1BA', tenant: null, currentStatus: 'on-market', leaseEnd: null, renewalProbability: null, daysUntilChange: 5, predictedChangeDate: '2026-04-12', confidence: 90, driver: 'Rachel Torres application approved, move-in scheduled', recommendedAction: 'Confirm move-in date', revenueRiskPerDay: 60, marketedDate: '2026-03-15' },
+  { unit: '202', building: 'Building A', type: '1BR/1BA', tenant: 'James Wilson', currentStatus: 'off-market', leaseEnd: '2026-08-31', renewalProbability: 78, daysUntilChange: 146, predictedChangeDate: '2026-08-31', confidence: 55, driver: 'Long tenure, no complaints; renewal likely', recommendedAction: 'Send renewal offer at 60-day mark', revenueRiskPerDay: 49, marketedDate: null },
+  { unit: '203', building: 'Building B', type: '3BR/2BA', tenant: null, currentStatus: 'on-market', leaseEnd: null, renewalProbability: null, daysUntilChange: 18, predictedChangeDate: '2026-04-25', confidence: 65, driver: 'Maintenance hold (HVAC) ETA Apr 18 + active negotiation', recommendedAction: 'Hold — maintenance ETA Apr 18', revenueRiskPerDay: 80, marketedDate: '2026-03-25' },
+  { unit: '301', building: 'Building B', type: '1BR/1BA', tenant: 'Anna Garcia', currentStatus: 'off-market', leaseEnd: '2026-05-20', renewalProbability: 55, daysUntilChange: 34, predictedChangeDate: '2026-05-10', confidence: 71, driver: 'Maintenance frustration; moderate renewal risk', recommendedAction: 'Resolve complaints, begin soft pre-marketing', revenueRiskPerDay: 50, marketedDate: null },
+  { unit: '302', building: 'Building B', type: '2BR/2BA', tenant: null, currentStatus: 'on-market', leaseEnd: null, renewalProbability: null, daysUntilChange: 30, predictedChangeDate: '2026-05-07', confidence: 58, driver: 'Vacant 22 days; price adjustment needed to accelerate', recommendedAction: 'Reduce rent by 4% to $1,920', revenueRiskPerDay: 67, marketedDate: '2026-03-16' },
+  { unit: '303', building: 'Building C', type: 'Studio', tenant: 'Tom Brown', currentStatus: 'off-market', leaseEnd: '2026-12-31', renewalProbability: 85, daysUntilChange: 268, predictedChangeDate: '2026-12-31', confidence: 42, driver: 'Low risk — long remaining lease, high satisfaction', recommendedAction: 'No action needed', revenueRiskPerDay: 38, marketedDate: null },
+  { unit: '401', building: 'Building C', type: '2BR/1BA', tenant: 'Emily Davis', currentStatus: 'off-market', leaseEnd: '2026-07-15', renewalProbability: 65, daysUntilChange: 83, predictedChangeDate: '2026-07-01', confidence: 67, driver: 'Mentioned wanting more space; upgrade offer may retain', recommendedAction: 'Offer 3BR upgrade or pre-market from Jun 1', revenueRiskPerDay: 62, marketedDate: null },
+];
+
+export const marketTransitionForecast = [
+  { month: 'Apr', goingOnMarket: 3, goingOffMarket: 2, netChange: 1 },
+  { month: 'May', goingOnMarket: 2, goingOffMarket: 3, netChange: -1 },
+  { month: 'Jun', goingOnMarket: 4, goingOffMarket: 2, netChange: 2 },
+  { month: 'Jul', goingOnMarket: 1, goingOffMarket: 3, netChange: -2 },
+  { month: 'Aug', goingOnMarket: 3, goingOffMarket: 1, netChange: 2 },
+  { month: 'Sep', goingOnMarket: 2, goingOffMarket: 2, netChange: 0 },
+];
+
+export const offMarketReasons = [
+  { reason: 'Occupied (Active Lease)', count: 6, color: '#059669' },
+  { reason: 'Maintenance Hold', count: 1, color: '#F59E0B' },
+  { reason: 'Renovation', count: 0, color: '#0891B2' },
+  { reason: 'Owner Hold', count: 0, color: '#94A3B8' },
+];
+
+export const marketPredictionAccuracy = [
+  { month: 'Oct', predicted: 4, actual: 5 },
+  { month: 'Nov', predicted: 3, actual: 3 },
+  { month: 'Dec', predicted: 5, actual: 4 },
+  { month: 'Jan', predicted: 3, actual: 3 },
+  { month: 'Feb', predicted: 4, actual: 5 },
+  { month: 'Mar', predicted: 3, actual: 3 },
+];

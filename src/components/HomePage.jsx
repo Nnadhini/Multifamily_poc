@@ -5,6 +5,7 @@ import {
   EventAvailable, BarChart, Email, PriceChange, TrendingUp, SmartToy,
   Campaign, NotificationsNone, AutoAwesome, WbSunny, ArrowForward,
   Verified, Speed, RocketLaunch, HomeWork, Search, EventBusy, Insights,
+  PersonSearch, ShowChart,
 } from '@mui/icons-material';
 
 const portalModules = [
@@ -29,6 +30,7 @@ const aiFeatures = [
   { key: 'ai-rent-reminders', title: 'Smart Rent Reminders', desc: 'Auto-escalate overdue, legal notices', impact: '↓ Late payments', icon: <NotificationsNone />, color: '#059669' },
   { key: 'ai-listing', title: 'AI Listing Writer', desc: 'Auto-generate listing copy, photos tagging', impact: '↑ Faster fill rate', icon: <AutoAwesome />, color: '#7C3AED' },
   { key: 'ai-finance', title: 'AI Finance Insights', desc: 'Spot underperforming units, tax optimization', impact: '↑ Net income', icon: <AccountBalance />, color: '#2563EB' },
+  { key: 'market-predictor', title: 'On/Off-Market Predictor', desc: 'AI predicts when units go on-market or off-market with confidence intervals', impact: '↑ On-market conversion', icon: <ShowChart />, color: '#0891B2' },
 ];
 
 const revenueFeatures = [
@@ -36,6 +38,7 @@ const revenueFeatures = [
   { key: 'seo-audit', title: 'SEO Audit Dashboard', desc: 'Prove SEO optimization drives traffic from 2K to 20K daily with keyword opportunities', impact: '37K monthly searches', icon: <Search />, color: '#2563EB' },
   { key: 'no-show-recovery', title: 'No-Show Recovery', desc: 'Prevent, recover, and fill every wasted tour slot using smart lock data and AI', impact: '$168K annual impact', icon: <EventBusy />, color: '#DC2626' },
   { key: 'manager-roi', title: 'Manager ROI Dashboard', desc: "Show property managers Rently's concrete value — tours, leases, and revenue impact", impact: '12x average ROI', icon: <Insights />, color: '#7C3AED' },
+  { key: 'rently-lead-intel', title: 'Rently Lead Intel', desc: 'Capture & score renters actively searching on Rently — match to vacant units instantly', impact: '↑ Lead-to-lease rate', icon: <PersonSearch />, color: '#059669' },
 ];
 
 const getGreeting = () => {
@@ -123,7 +126,7 @@ export default function HomePage({ onNavigate }) {
             <AutoAwesome sx={{ color: '#fff', fontSize: 16 }} />
           </Box>
           <Typography sx={{ fontWeight: 800, fontSize: '1.15rem', color: '#0F172A' }}>AI Features to Boost Revenue</Typography>
-          <Chip label="9 AI tools" size="small" sx={{ height: 20, fontSize: '0.6rem', fontWeight: 600, bgcolor: '#F5F3FF', color: '#7C3AED' }} />
+          <Chip label="10 AI tools" size="small" sx={{ height: 20, fontSize: '0.6rem', fontWeight: 600, bgcolor: '#F5F3FF', color: '#7C3AED' }} />
         </Box>
         <Typography sx={{ fontSize: '0.78rem', color: '#94A3B8', mb: 2, ml: 4 }}>Powered by machine learning to maximize your rental income</Typography>
 

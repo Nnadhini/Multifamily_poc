@@ -34,9 +34,19 @@ app.use(express.json({ limit: '1mb' }));
 app.use(morgan(config.nodeEnv === 'production' ? 'combined' : 'dev'));
 
 // ── Rate limiting ─────────────────────────────────────────────────────────────
+// Stricter limit for auth endpoints
 app.use('/api/auth', rateLimit({
   windowMs: 15 * 60 * 1000, // 15 min
   max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again later.' },
+}));
+
+// General rate limit for all other authenticated API routes
+app.use('/api', rateLimit({
+  windowMs: 60 * 1000, // 1 min
+  max: 200,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many requests, please try again later.' },
@@ -76,7 +86,7 @@ app.get('/api/events', requireAuth, (req, res) => {
   // Send a heartbeat every 30 s to keep the connection alive through proxies
   const heartbeat = setInterval(() => {
     client.write(':heartbeat\n\n');
-  }, 30_000);
+  }, config.sseHeartbeatMs);
 
   req.on('close', () => {
     clearInterval(heartbeat);

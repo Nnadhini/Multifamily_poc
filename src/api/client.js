@@ -24,14 +24,15 @@ client.interceptors.request.use((config) => {
   return config;
 });
 
-// On 401 — token expired or invalid — clear auth and reload
+// On 401 — token expired or invalid — clear auth and emit an event for the
+// AuthContext to handle (avoids bypassing React Router with window.location).
 client.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('rently_token');
       localStorage.removeItem('rently_user');
-      window.location.href = '/login';
+      window.dispatchEvent(new CustomEvent('rently:unauthorized'));
     }
     return Promise.reject(error);
   }

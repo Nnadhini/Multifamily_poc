@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../api/client.js';
 import { login as apiLogin, register as apiRegister } from '../api/auth.js';
 
@@ -9,12 +10,24 @@ const TOKEN_KEY = 'rently_token';
 const USER_KEY  = 'rently_user';
 
 export function AuthProvider({ children }) {
+  const navigate = useNavigate();
   const [user, setUser]       = useState(() => {
     try { return JSON.parse(localStorage.getItem(USER_KEY)); } catch { return null; }
   });
   const [token, setToken]     = useState(() => localStorage.getItem(TOKEN_KEY) || null);
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState(null);
+
+  // Listen for 401 events dispatched by the axios interceptor
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      setToken(null);
+      setUser(null);
+      navigate('/login', { replace: true });
+    };
+    window.addEventListener('rently:unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('rently:unauthorized', handleUnauthorized);
+  }, [navigate]);
 
   // When no backend is configured, auto-sign-in as a demo user
   const isDemoMode = !API_URL;

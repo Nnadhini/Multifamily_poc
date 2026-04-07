@@ -6,11 +6,17 @@ on:
   pull_request:
     branches: [main]
 
+# Minimal default permissions for all jobs; each job can broaden as needed.
+permissions:
+  contents: read
+
 jobs:
   # ── Frontend ───────────────────────────────────────────────────────────────
   frontend:
     name: Frontend — lint & build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: .
@@ -40,6 +46,8 @@ jobs:
   backend:
     name: Backend — lint & test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: server
@@ -91,7 +99,12 @@ jobs:
     name: Deploy frontend to Vercel
     needs: [frontend, backend]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: read
+    if: >
+      github.ref == 'refs/heads/main' &&
+      github.event_name == 'push' &&
+      secrets.VERCEL_TOKEN != ''
 
     steps:
       - uses: actions/checkout@v4

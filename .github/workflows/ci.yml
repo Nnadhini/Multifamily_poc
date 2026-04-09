@@ -1,0 +1,117 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "copilot/**"]
+  pull_request:
+    branches: [main]
+
+# Minimal default permissions for all jobs; each job can broaden as needed.
+permissions:
+  contents: read
+
+jobs:
+  # ── Frontend ───────────────────────────────────────────────────────────────
+  frontend:
+    name: Frontend — lint & build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+        env:
+          # Build in demo mode (no real API URL) so it works without a backend
+          VITE_API_URL: ""
+
+  # ── Backend ────────────────────────────────────────────────────────────────
+  backend:
+    name: Backend — lint & test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: server
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: rently_test
+          POSTGRES_USER: rently
+          POSTGRES_PASSWORD: rently
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run migrations
+        run: npm run db:migrate
+        env:
+          DATABASE_URL: postgresql://rently:rently@localhost:5432/rently_test
+          JWT_SECRET: ci-test-secret
+          NODE_ENV: test
+
+      - name: Run tests
+        run: npm test
+        env:
+          DATABASE_URL: postgresql://rently:rently@localhost:5432/rently_test
+          JWT_SECRET: ci-test-secret
+          NODE_ENV: test
+
+  # ── Deploy (production only) ───────────────────────────────────────────────
+  deploy-frontend:
+    name: Deploy frontend to Vercel
+    needs: [frontend, backend]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    if: >
+      github.ref == 'refs/heads/main' &&
+      github.event_name == 'push' &&
+      secrets.VERCEL_TOKEN != ''
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        run: npx vercel deploy --prod --yes --token "$VERCEL_TOKEN"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

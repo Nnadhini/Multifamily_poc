@@ -5,7 +5,7 @@ import {
   ChevronLeft, ChevronRight, LocationCity, FiberManualRecord, AutoAwesome,
   NotificationsNone, Home, AccountBalance, Apartment, Description,
   Campaign, SmartToy, TrendingUp, Email, PriceChange, EventAvailable,
-  RocketLaunch, HomeWork, Search, EventBusy, Insights,
+  RocketLaunch, HomeWork, Search, EventBusy, Insights, PersonSearch, ShowChart,
 } from '@mui/icons-material';
 
 export default function Sidebar({ communities, selected, selectedBuilding, onSelectCommunity, onSelectBuilding, open, onToggle, currentPage, onNavigate }) {
@@ -37,6 +37,7 @@ export default function Sidebar({ communities, selected, selectedBuilding, onSel
     { key: 'ai-rent-reminders', label: 'Rent Reminders', icon: <NotificationsNone /> },
     { key: 'ai-listing', label: 'Listing Writer', icon: <AutoAwesome /> },
     { key: 'ai-finance', label: 'Finance Insights', icon: <AccountBalance /> },
+    { key: 'market-predictor', label: 'Market Predictor', icon: <ShowChart /> },
   ];
 
   const revenueNav = [
@@ -44,6 +45,7 @@ export default function Sidebar({ communities, selected, selectedBuilding, onSel
     { key: 'seo-audit', label: 'SEO Audit', icon: <Search /> },
     { key: 'no-show-recovery', label: 'No-Show Recovery', icon: <EventBusy /> },
     { key: 'manager-roi', label: 'Manager ROI', icon: <Insights /> },
+    { key: 'rently-lead-intel', label: 'Lead Intel', icon: <PersonSearch /> },
   ];
 
   const getDotColor = (occ, tot) => { const r = (occ/tot)*100; return r >= 90 ? '#10B981' : r >= 75 ? '#F59E0B' : '#EF4444'; };
@@ -97,7 +99,7 @@ export default function Sidebar({ communities, selected, selectedBuilding, onSel
           <ListItemButton onClick={() => setShowAi(!showAi)} sx={{ mx: '4px', borderRadius: '10px', py: '5px' }}>
             <ListItemIcon sx={{ minWidth: 34, color: '#7C3AED' }}><AutoAwesome sx={{ fontSize: 18 }} /></ListItemIcon>
             <ListItemText primary="AI Features" primaryTypographyProps={{ fontSize: '0.76rem', fontWeight: 600, color: '#7C3AED' }} />
-            <Chip label="9" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: '#7C3AED20', color: '#7C3AED', fontWeight: 700 }} />
+            <Chip label="10" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: '#7C3AED20', color: '#7C3AED', fontWeight: 700 }} />
             {showAi ? <ExpandLess sx={{ color: '#475569', fontSize: 16, ml: 0.5 }} /> : <ExpandMore sx={{ color: '#475569', fontSize: 16, ml: 0.5 }} />}
           </ListItemButton>
         )}
@@ -114,7 +116,7 @@ export default function Sidebar({ communities, selected, selectedBuilding, onSel
           <ListItemButton onClick={() => setShowRevenue(!showRevenue)} sx={{ mx: '4px', borderRadius: '10px', py: '5px' }}>
             <ListItemIcon sx={{ minWidth: 34, color: '#059669' }}><RocketLaunch sx={{ fontSize: 18 }} /></ListItemIcon>
             <ListItemText primary="Revenue Engine" primaryTypographyProps={{ fontSize: '0.76rem', fontWeight: 600, color: '#059669' }} />
-            <Chip label="4" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: '#05966920', color: '#059669', fontWeight: 700 }} />
+            <Chip label="5" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: '#05966920', color: '#059669', fontWeight: 700 }} />
             {showRevenue ? <ExpandLess sx={{ color: '#475569', fontSize: 16, ml: 0.5 }} /> : <ExpandMore sx={{ color: '#475569', fontSize: 16, ml: 0.5 }} />}
           </ListItemButton>
         )}

@@ -26,6 +26,7 @@ import RenterListingPage from './modules/RenterListingPage';
 import SeoAuditPage from './modules/SeoAuditPage';
 import NoShowRecoveryPage from './modules/NoShowRecoveryPage';
 import ManagerRoiPage from './modules/ManagerRoiPage';
+
 import LoginPage from './pages/LoginPage.jsx';
 import { useAuth } from './context/AuthContext.jsx';
 import { fetchCommunities } from './api/communities.js';
@@ -56,6 +57,39 @@ const PAGE_ROUTES = [
   { path: '/no-show-recovery',  Component: NoShowRecoveryPage },
   { path: '/manager-roi',       Component: ManagerRoiPage },
 ];
+
+import RentlyLeadIntelPage from './modules/RentlyLeadIntelPage';
+import MarketStatusPredictorPage from './modules/MarketStatusPredictorPage';
+import { communities } from './mockData';
+
+const pages = {
+  home: HomePage,
+  dashboard: DashboardPage,
+  financials: FinancialsPage,
+  properties: PropertiesPage,
+  tenants: TenantManagementPage,
+  leases: LeaseManagementPage,
+  maintenance: MaintenancePage,
+  bookings: BookingsLeadsPage,
+  reports: ReportsPage,
+  communication: CommunicationHubPage,
+  'ai-pricing': DynamicPricingPage,
+  'ai-vacancy': VacancyPredictorPage,
+  'ai-screening': AiTenantScreeningPage,
+  'ai-chatbot': AiChatbotPage,
+  'ai-predictive-maint': PredictiveMaintenancePage,
+  'ai-renewal': RenewalNudgerPage,
+  'ai-rent-reminders': SmartRentRemindersPage,
+  'ai-listing': AiListingWriterPage,
+  'ai-finance': AiFinanceInsightsPage,
+  'renter-listing': RenterListingPage,
+  'seo-audit': SeoAuditPage,
+  'no-show-recovery': NoShowRecoveryPage,
+  'manager-roi': ManagerRoiPage,
+  'rently-lead-intel': RentlyLeadIntelPage,
+  'market-predictor': MarketStatusPredictorPage,
+};
+
 
 function AppShell() {
   const navigate = useNavigate();
